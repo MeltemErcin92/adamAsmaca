@@ -1,0 +1,8 @@
+.table {
+  border: 1px solid black;
+  margin-top: 30px;
+  width: 500px;
+}
+.table td {
+  border: 1px solid black;
+}

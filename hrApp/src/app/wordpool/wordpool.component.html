@@ -1,0 +1,23 @@
+<div style="margin-top: 30px">
+  <label style="font-weight: bold; padding-right: 20px">Word Area</label>
+  <input
+    style="margin-right: 10px"
+    type="text"
+    placeholder="Text"
+    [(ngModel)]="word.text"
+  />
+  <input type="text" placeholder="Meaning" [(ngModel)]="word.meaning" />
+  <button style="font-weight: bold" (click)="Save()">Save</button>
+  <table class="table">
+    <thead>
+      <th>Text</th>
+      <th>Meaning</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let wordItem of wordList">
+        <td>{{ wordItem.text }}</td>
+        <td>{{ wordItem.meaning }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
