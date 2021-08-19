@@ -17,6 +17,8 @@
       <tr *ngFor="let wordItem of wordList">
         <td>{{ wordItem.text }}</td>
         <td>{{ wordItem.meaning }}</td>
+        <td><button (click)="deleteRecord(wordItem)">Delete</button></td>
+        <td><button (click)="editRecord(wordItem)">Edit</button></td>
       </tr>
     </tbody>
   </table>

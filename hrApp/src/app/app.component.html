@@ -54,4 +54,18 @@
     <a style="color: rgb(0, 0, 0)" routerLink="/wordpool">WordPool</a>
   </div>
   <router-outlet></router-outlet>
+
+  <div>
+    <div>
+      <input
+        class="letterBox"
+        type="text"
+        *ngFor="let item of targetWordArray; let i = index"
+      />
+    </div>
+    <div>
+      <input class="letterBox" type="text" [(ngModel)]="letter" />
+    </div>
+    <button (click)="Guess(letter)">Tahmin asdsads</button>
+  </div>
 </div>

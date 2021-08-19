@@ -292,3 +292,10 @@ svg#clouds {
     visibility: hidden;
   }
 }
+.letterBox {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  width: 16px;
+  margin: 50px 4px 12px 0px;
+}
