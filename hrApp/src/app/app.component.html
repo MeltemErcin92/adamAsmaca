@@ -7,10 +7,16 @@
 <!-- * * * * * * * to get started with your project! * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<div class="content" role="main">
+<div
+  class="content"
+  role="main"
+>
   <p>Home Page</p>
   <!-- Highlight Card -->
-  <div class="card highlight-card card-small" style="background-color: #ffc107">
+  <div
+    class="card highlight-card card-small"
+    style="background-color: #ffc107"
+  >
     <svg
       id="rocket"
       xmlns="http://www.w3.org/2000/svg"
@@ -19,7 +25,11 @@
       viewBox="0 0 101.678 101.678"
     >
       <title>Rocket Ship</title>
-      <g id="Group_83" data-name="Group 83" transform="translate(-141 -696)">
+      <g
+        id="Group_83"
+        data-name="Group 83"
+        transform="translate(-141 -696)"
+      >
         <circle
           id="Ellipse_8"
           data-name="Ellipse 8"
@@ -51,21 +61,33 @@
         </g>
       </g>
     </svg>
-    <a style="color: rgb(0, 0, 0)" routerLink="/wordpool">WordPool</a>
+    <a
+      style="color: rgb(0, 0, 0)"
+      routerLink="/wordpool"
+    >WordPool</a>
   </div>
   <router-outlet></router-outlet>
 
   <div>
     <div>
-      <input
+      <span
         class="letterBox"
-        type="text"
         *ngFor="let item of targetWordArray; let i = index"
+      >
+        <span style="margin-top: -25px;  display: inline-block; text-transform: capitalize;">{{item.letter}}</span>
+      </span>
+
+
+    </div>
+    <div class="GuessBox">
+      <input
+        class="guessInput"
+        type="text"
+        [(ngModel)]="letter"
       />
+      <button (click)="Guess(letter)">Tahmin </button>
+      <button (click)="Hint()">İpucu Ver!</button>
     </div>
-    <div>
-      <input class="letterBox" type="text" [(ngModel)]="letter" />
-    </div>
-    <button (click)="Guess(letter)">Tahmin asdsads</button>
+
   </div>
 </div>

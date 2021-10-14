@@ -294,8 +294,20 @@ svg#clouds {
 }
 .letterBox {
   border-top: none;
-  border-left: none;
-  border-right: none;
-  width: 16px;
-  margin: 50px 4px 12px 0px;
+    border-left: none;
+    border-right: none;
+    width: 30px;
+    margin: 50px 4px 12px 0px;
+    height: 30px;
+    display: inline-block;
+    border-bottom: 1px solid red;
+}
+
+.guessInput{
+  width: 250px;
+  margin: 10px;
+}
+.GuessBox{
+  flex-direction: column;
+    display: flex;
 }

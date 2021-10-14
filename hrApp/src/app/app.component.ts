@@ -8,24 +8,26 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'hrApp';
   wordIndex = -1;
-  targetWordArray: number[] = [];
+  //çizilecek kutucuk sayısı
+  targetWordArray: any[] = [];
+  hintWordArray: any[] = [];
   letter = '';
-  constructor() {}
+  constructor() { }
   ngOnInit(): void {
     this.wordIndex = Math.floor(
       Math.random() *
-        (JSON.parse(localStorage.getItem('wordList') || '{}') as []).length
+      (JSON.parse(localStorage.getItem('wordList') || '{}') as []).length
     );
-
+    // burda rasgele seçilen kelimenin harf uzunluğu hesaplanıyor.
     var arrayLength = (
       (
         (JSON.parse(localStorage.getItem('wordList') || '{}') as [])[
-          this.wordIndex
+        this.wordIndex
         ] as any
       ).text as string
     ).length;
     for (let index = 0; index < arrayLength; index++) {
-      this.targetWordArray.push(0);
+      this.targetWordArray.push({ index: index, letter: "" });
     }
     console.log(this.wordIndex);
   }
@@ -34,11 +36,37 @@ export class AppComponent implements OnInit {
     var wordToFind = (
       JSON.parse(localStorage.getItem('wordList') || '{}') as []
     )[this.wordIndex];
-    var isLetterExist = ((wordToFind as any).text as string).includes(letter);
-    if (isLetterExist == false) {
-      console.log(' Yanlış tahmin.');
+    if (letter != "") {
+      var isLetterExist = ((wordToFind as any).text as string).toLocaleUpperCase().includes(letter.toLocaleUpperCase());
+      if (isLetterExist == false) {
+        console.log(' Yanlış tahmin.');
+      } else {
+        console.log('Doğru Tahmin.');
+        for (let index = 0; index < (wordToFind as any).text.length; index++) {
+          const element = (wordToFind as any).text[index];
+          if (element.toLocaleUpperCase() == letter.toLocaleUpperCase()) {
+            this.targetWordArray[index].letter = letter.toLocaleUpperCase();
+
+          }
+        }
+        this.letter = "";
+      }
     } else {
-      console.log('Doğru Tahmin.');
+      console.log('Bir şeyler yaz :)');
     }
+
+  }
+
+  Hint(): void {
+    var word = (
+      (JSON.parse(localStorage.getItem('wordList') || '{}') as [])[
+      this.wordIndex
+      ] as any
+    ).text as string;
+    var randomLetterIndex = Math.floor(Math.random() * word.length);
+    if (this.targetWordArray[randomLetterIndex].letter != "") {
+      this.Hint();
+    }
+    this.targetWordArray[randomLetterIndex].letter = word[randomLetterIndex];
   }
 }
